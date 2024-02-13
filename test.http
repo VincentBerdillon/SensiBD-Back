@@ -1,0 +1,126 @@
+### Récupération de toutes les annonces
+GET http://localhost:5000/posts
+
+### Récupération d'une annonce par son id
+GET http://localhost:5000/posts/2
+
+### Récupération de toutes les annonces par catégorie
+GET http://localhost:5000/posts/category/2
+
+### Récupération de toutes les annonces par audience
+GET http://localhost:5000/posts/audience/2
+
+### Récupération de toutes les annonces par condition
+GET http://localhost:5000/posts/condition/1
+
+### Ajout d'une annonce
+POST http://localhost:5000/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJyb2xlIjoxLCJpYXQiOjE3MDIzOTg1ODgsImV4cCI6MTcwMjQwMjE4OH0.KuUqhXMLNfxnqoYSEeKXm40Joslb3OZ8xedsL60H3Dc
+
+{
+    "post_title": "Mon annonce1",
+    "slug": "mon-annonce-1",
+    "description": "Ma description",
+    "image": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+    "book_title": "Merlin l'enchanteur",
+    "book_author": "Arthur",
+    "user_id": 10,
+    "category_id": 1,
+    "audience_id": 1,
+    "condition_id": 1
+}
+
+### Modification d'une annonce par son id
+PUT http://localhost:5000/posts/39
+Content-Type: application/json
+
+{
+    "post_title": "Mon annonce modifiée",
+    "slug": "mon-annonce-modifiee",
+    "description": "Ma description remodifiée",
+    "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.elle.fr%2FLoisirs%2FLivres%2FNews%2FVoici-le-livre-le-plus-vendu-en-France-en-2022-et-ce-n-est-pas-un-roman-4085975&psig=AOvVaw0XkHiKcIL0H6WUi-LyyygF&ust=1701795406887000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDxx4eg9oIDFQAAAAAdAAAAABAJ",
+    "book_title": "Merlin Ze enchanteur",
+    "book_author": "Arthur Leroi",
+    "user_id": 2,
+    "category_id": 2,
+    "audience_id": 2,
+    "condition_id": 2
+}
+
+### Suppression d'une annonce par son id
+DELETE http://localhost:5000/posts/39
+
+### Récupération de toutes les catégories
+GET http://localhost:5000/categories
+
+### Récupération d'une catégorie par son id
+GET http://localhost:5000/categories/3
+
+### Récupération de toutes les audiences
+GET http://localhost:5000/audiences
+
+### Ajout d'un utilisateur
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "address": "4 Bd de Strasbourg, 75010 Paris, France",
+    "city": "Paris",
+    "confirmPassword": "Azerty123!",
+    "country": "France",
+    "email": "lidkjdaqzdlk@gmail.com",
+    "error": false,
+    "firstname": "Elaa",
+    "lastname": "xilda",
+    "latitude": 48.8698223,
+    "longitude": 2.3550348,
+    "number": "4",
+    "password": "Azerty123!",
+    "pseudonym": "lixadxci",
+    "street": "Bd de Strasbourg",
+    "zipcode": "75010"
+
+}
+
+### Récupération de toutes les conditions
+GET http://localhost:5000/conditions
+
+### Récupération d'une condition par son id
+GET http://localhost:5000/conditions/1
+
+### Récupération d'un utilisateur et des annonces associées
+GET http://localhost:5000/users/4
+
+### Connexion pour obtenir le Token JWT
+POST http://localhost:5000/users/login
+Content-Type: application/json
+
+{
+    "email": "lidkjdaqzdlk@gmail.com",
+    "password": "Azerty123!"
+}
+
+### Récupération d'un utilisateur et des annonces associées avec Token JWT
+GET http://localhost:5000/users/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJyb2xlIjoxLCJpYXQiOjE3MDIzOTQ0MzUsImV4cCI6MTcwMjM5ODAzNX0.lvIYFNurOCsl0ULnnom5utzO-OC6U_Z6_0e-VTjWIB4
+
+### Ajout d'un message lié à une annonce et à un utilisateur
+POST http://localhost:5000/messages/5/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJyb2xlIjoxLCJpYXQiOjE3MDI0NzEzMDAsImV4cCI6MTcwMjQ3NDkwMH0.7lIJWYv4SP2ydhGR6XxnvR2_KFM3Qbnx7HWYFmrhivQ
+
+{
+    "content": "Êtes-vous encore interessée ?"
+}
+
+### Récupération des messages d'une conversation
+GET http://localhost:5000/messages/5/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJyb2xlIjoxLCJpYXQiOjE3MDI0NzEzMDAsImV4cCI6MTcwMjQ3NDkwMH0.7lIJWYv4SP2ydhGR6XxnvR2_KFM3Qbnx7HWYFmrhivQ
+
+### Récupération des conversations d'un utilisateur (le dernier message de chaque conv)
+GET http://localhost:5000/messages/conversations
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJyb2xlIjoxLCJpYXQiOjE3MDI0NzEzMDAsImV4cCI6MTcwMjQ3NDkwMH0.7lIJWYv4SP2ydhGR6XxnvR2_KFM3Qbnx7HWYFmrhivQ
+
+### Récupération de toutes les annonces par ville dans la searchbar
+GET http://localhost:5000/posts/find?NomDeCleRandom=Bordeaux
